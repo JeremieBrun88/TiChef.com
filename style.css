@@ -5,6 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins";
+  margin-bottom: 10px;
 }
 
 :root {
@@ -153,9 +154,9 @@ a {
 }
 
 .btn {
-  color: var(--orange);
+background-color: orange;
   padding: 8px 16px;
-  border: 1px solid var(--orange);
+  border: 2px solid var(--orange);
   border-radius: 32px;
 }
 
@@ -326,3 +327,4 @@ les resolutions d'ecrans d'apres un petit script sass*/
     background-color: blue;
   }
 }
+

@@ -2,6 +2,8 @@ fetch("data.json")
     .then(response => response.json())
     .then(data => {
 
+        // va chercher dans le tableau si àa existe //
+
         const imput = document.getElementById("recherche")
         let trie = []
         imput.addEventListener("input", () => {
@@ -10,6 +12,9 @@ fetch("data.json")
             trie = data.filter(recette => {
                 return recette.nom.includes(imput.value)
             });
+
+            // lors de la rentrée des caractère par l'utilisateur, si ma recette existe, alors je fais le tri, sinon je continu d'afficher la data //
+
             if (trie.length > 0) {
                 afficher(trie)
             } else {
@@ -66,7 +71,7 @@ function afficher(donnee) {
         document.getElementById("container").innerHTML += `
 
 
-        <div class="card">
+        <div data-aos="zoom-out-down" class="card">
             <div class="flex gap16 align-center">
                 <h1>${recette.nom}</h1>
                 
@@ -136,4 +141,41 @@ function afficher(donnee) {
     })
 }
 
+// article à la une //
 
+fetch("data2.json")
+    .then(response2 => response2.json())
+    .then(data2 => {
+
+ afficher2(data2)
+})
+function afficher2(donnee) {
+
+       
+    donnee.forEach(tableau => {
+
+
+
+            document.getElementById("container2").innerHTML += 
+            ` 
+    <div 
+     data-aos="flip-left">
+             <div  class="card legend flex spaceBetween container align-center">
+            <img src="${tableau.img}" alt="" class=" large-6 responsive container">
+            <div class="large-6">
+                <h2>${tableau.titre}</h2>
+                <div class="flex spaceBetween align-center">
+                    <p>${tableau.date}</p>
+                    <p>${tableau.auteur}</p>
+                </div>
+                <p>${tableau.resume}</p>
+                <div>
+                    <p class="btn">Lire l'article</p>
+                </div>
+            </div>
+        </div>
+        `
+
+    }) }
+
+ 
